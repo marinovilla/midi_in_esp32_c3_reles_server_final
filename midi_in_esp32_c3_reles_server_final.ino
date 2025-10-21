@@ -31,7 +31,7 @@ void setup() {
   reles_ini();
   modo_config_ini();
 
-  filtro_setDebug(true);
+  filtro_debug(true);
   reles_debug(0);
 
   unsigned long Tiempo = millis();

@@ -26,10 +26,6 @@ void filtro_PC (byte channel, byte program) {
 
 static bool debugEnabled = false;
 
-void filtro_setDebug(bool enable) {
+void filtro_debug(bool enable) {
     debugEnabled = enable;
 }
-
-/*bool filtro_getDebug() {
-    return debugEnabled;
-}*/
