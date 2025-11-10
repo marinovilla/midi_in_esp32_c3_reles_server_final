@@ -31,9 +31,15 @@ void setup() {
   reles_ini();
   modo_config_ini();
 
-  filtro_debug(true);
   reles_debug(0);
+  
+  tempo_modo();
+ 
+  sel_modo();
+}
 
+
+void tempo_modo(){
   unsigned long Tiempo = millis();
   while (millis() - Tiempo < 5000) {
     if (digitalRead(PIN_MODO) == LOW) {
@@ -41,13 +47,15 @@ void setup() {
       break;
     }
   }
+}
 
+void sel_modo(){
   if (modo) {
-    Serial.println("*** Modo Configuración ***");
-    server_config_ini();
-  } else {
-    Serial.println("*** Modo Funcionamiento ***");
-  }
+      Serial.println("*** Modo Configuración ***");
+      server_config_ini();
+    } else {
+      Serial.println("*** Modo Funcionamiento ***");
+    }
 }
 
 void loop() {

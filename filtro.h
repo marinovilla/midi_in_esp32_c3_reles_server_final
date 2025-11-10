@@ -5,6 +5,8 @@
 
 void filtro_CC(byte channel, byte control, byte value);
 void filtro_PC(byte channel, byte program);
-void filtro_debug(bool enable);
+
+
+
 
 #endif
