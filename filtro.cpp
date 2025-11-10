@@ -1,12 +1,15 @@
 #include "filtro.h"
 #include "modo_config.h"
 #include "reles.h"
+#include "redirigir.h"
 #include <EEPROM.h>
 #include "config.h"
 
 uint8_t estado_actual_reles = 0;
 
 void filtro_CC(byte channel, byte number, byte value) {
+  redirigir_CC(channel, number, value);
+
   int index = modo_config_CC(number);
   if (index >= 0) {
     uint8_t tipo_reles = EEPROM.read(EEPROM_START + index * CONFIG_SIZE);
@@ -18,8 +21,9 @@ void filtro_CC(byte channel, byte number, byte value) {
   }
 }
 
-
 void filtro_PC (byte channel, byte program) {
+  redirigir_PC(channel, program);
+
   int index = modo_config_PC(program);
   if (index >= 0) {
     uint8_t tipo_reles = EEPROM.read(EEPROM_START + index * CONFIG_SIZE);
@@ -28,4 +32,3 @@ void filtro_PC (byte channel, byte program) {
     Serial.printf("[PC %d] Config %d => Relés: %02X\n", program, index + 1, reles);
   }
 }
-
